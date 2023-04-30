@@ -1,0 +1,73 @@
+* {
+  outline: 1px solid red;
+}
+.body {
+  background: #000000;
+  height: 100%;
+  color: #FFFFFF;
+}
+.page {
+  max-width: 1280px;
+	min-width: 320px;
+	margin: 0 auto;
+}
+.header {
+  margin: 45px auto 0;
+  max-width: 880px;
+  height: 74px;
+  border-bottom: 1px solid #545454b3;
+  
+}
+.header__logo {
+  cursor: pointer;
+}
+.profile {
+  margin: 40px auto 0;
+  max-width: 880px;
+  height: 120px;
+  display: grid;
+  grid-template-rows:  auto;/* 3 строки */
+  grid-template-columns: auto auto auto 1fr auto;
+  grid-template-areas: 'profile__avatar profile__info profile__edit-btn . profile__add-btn';
+  
+}
+.profile__avatar {
+  grid-area: profile__avatar;
+  width: 168.75px;
+  height: 127.5px;
+}
+.profile__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.profile__info {
+  grid-area: profile__info;
+}
+.profile__name {
+
+}
+.profile__bio {
+
+}
+
+.profile__edit-btn {
+  width: 24px;
+  height: 24px;
+  background-color: #000000;
+  background-image: url(images/edit-btn.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #FFFFFF;
+  grid-area: profile__edit-btn;
+}
+.profile__add-btn {
+  width: 150px;
+  height: 50px;
+  background-color: #000000;
+  background-image: url(images/add-btn.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid #FFFFFF;
+  grid-area: profile__add-btn;
+}
