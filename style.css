@@ -34,7 +34,7 @@
   grid-template-columns: min-content 336px auto min-content;
   grid-template-areas: 'profile__avatar profile__info .  profile__add-btn'
                         'profile__avatar profile__info .  profile__add-btn';
-  grid-auto-rows: 1fr;
+  
 }
 .profile__avatar {
   grid-area: profile__avatar;
@@ -49,12 +49,11 @@
 }
 .profile__info {
   grid-area: profile__info;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  width: 336px;
   
 }
 .profile__name {
+  position: relative;
   font-family: 'Inter';
   font-weight: 500;
   font-size: 42px;
@@ -74,6 +73,7 @@
 }
 
 .profile__edit-btn {
+  position: absolute;
   width: 24px;
   height: 24px;
   background-color: #000000;
@@ -81,10 +81,10 @@
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid #FFFFFF;
-  margin: 0;
   cursor: pointer;
   transition: 0.3s;
-  margin-top: 37px;
+  top: 14px;
+  right: 0px;
   grid-area: profile__edit-btn;
 }
 .profile__edit-btn:hover {
@@ -98,6 +98,7 @@
   background-image: url(images/add-btn.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 22px;
   border: 2px solid #FFFFFF;
   grid-area: profile__add-btn;
   margin: auto 0;
@@ -119,9 +120,10 @@
   grid-auto-rows: 1fr;
   column-gap: 17px;
   row-gap: 20px;
+  justify-items: center;
 }
 .card {
-  
+  max-width: 282px;
   height: 361px;
   border-radius: 10px;
   overflow: hidden;
@@ -155,6 +157,7 @@
 
 .card__btn-like{
   background-image: url(images/btn-like.svg);
+  background-repeat: no-repeat;
   width: 22px;
   height: 19px;
   
@@ -236,8 +239,7 @@
   max-width: calc(100% - 30px);
 }
 .profile__add-btn {
-  width: 100px;
-  height: 40px;
+
 }
 .cards {
   grid-template-columns: repeat(2, 1fr);
@@ -247,13 +249,15 @@
 @media screen and (max-width: 767px) {
   .cards {
     grid-template-columns: 1fr;
-    margin: 0 19px;
+    margin: 36px 19px 0;
   }
   .page {
 
   }
   .profile {
     grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    grid-auto-rows: min-content;
     grid-template-areas:  'profile__avatar'
                           'profile__info'
                           'profile__add-btn';
@@ -262,34 +266,39 @@
     text-align: center;
   }
   .profile__info {
-    justify-content: center;
     width: 100%;
+    text-align: center;
+    margin-top: 22.5px;
   }
   .profile__name {
     font-weight: 500;
-    margin: 22.25px 10px 0 0;
+    
     font-size: 27px;
     line-height: 33px;
-    text-align: center;
+    position: relative;
+    display: inline;
+    width: 189px;
   }
   .profile__bio {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    text-align: center;
-    width: 100%;
-    margin-top: 0;
+    width: 282px;
+    margin: 8px auto 0;
   }
   .profile__edit-btn {
-    
-    margin: 30.25px 0 0 0;
+    position: absolute;
+    margin: 0 0 0 0;
+    top: 10px;
+    right: -30px;
     width: 18px;
     height: 18px;
   }
   .profile__add-btn {
     width: 282px;
     height: 50px;
-    margin: 0 auto;
+    margin: 32px auto 0;
+    background-size: 16px;
   }
   .header {
     max-width: 100%;
@@ -300,5 +309,8 @@
     width: 103.74px;
     height: 24.4px;
     margin: 28px 0 0 27px;
+  }
+  .profile__avatar {
+    margin: 0;
   }
 }
