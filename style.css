@@ -30,9 +30,10 @@
   margin: 40px auto 0;
   max-width: 880px;
   display: grid;
-  grid-template-rows:  1fr;
-  grid-template-columns: auto 336px 1fr auto;
-  grid-template-areas: 'profile__avatar profile__info . profile__add-btn';
+  grid-template-rows:  1fr 1fr;
+  grid-template-columns: min-content 336px auto min-content;
+  grid-template-areas: 'profile__avatar profile__info .  profile__add-btn'
+                        'profile__avatar profile__info .  profile__add-btn';
   grid-auto-rows: 1fr;
 }
 .profile__avatar {
@@ -48,10 +49,10 @@
 }
 .profile__info {
   grid-area: profile__info;
-  
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
+  justify-content: space-between;
+  
 }
 .profile__name {
   font-family: 'Inter';
@@ -59,8 +60,8 @@
   font-size: 42px;
   line-height: 48px;
   height: 39px;
-  margin: 22px 0 16px;
-  width: 294px;
+  margin: 22px 0 0;
+  
 }
 .profile__bio {
   font-family: 'Inter';
@@ -68,9 +69,8 @@
   font-size: 18px;
   height: 18px;
   line-height: 22px;
-  margin: 0 0 25px;
+  margin: 16px 0 25px;
   width: 336px;
-  display: block;
 }
 
 .profile__edit-btn {
@@ -81,9 +81,11 @@
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid #FFFFFF;
-  margin: 37px 0 0 18px;
+  margin: 0;
   cursor: pointer;
   transition: 0.3s;
+  margin-top: 37px;
+  grid-area: profile__edit-btn;
 }
 .profile__edit-btn:hover {
   opacity: 0.6;
@@ -101,6 +103,7 @@
   margin: auto 0;
   cursor: pointer;
   transition: 0.3s;
+  padding: 0;
 }
 .profile__add-btn:hover {
   opacity: 0.6;
@@ -176,7 +179,7 @@
   width: 318px;
   margin: 67px 0 60px;
 }
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1279px) {
   .header {
     max-width: calc(100% - 60px);
   }
@@ -190,10 +193,11 @@
     max-width: calc(100% - 60px);
   }
 }
-@media screen and (max-width: 767px){
+@media screen and (max-width: 1023px){
   .profile {
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas: 'profile__avatar profile__info profile__add-btn';
+    grid-template-columns: min-content auto minmax(10px, 1fr) min-content;
+    grid-template-areas: 'profile__avatar profile__info . profile__add-btn'
+                          'profile__avatar profile__info . profile__add-btn';
     max-width: calc(100% - 30px);
   
 }
@@ -201,14 +205,15 @@
   grid-area: profile__avatar;
   margin-right: 10px;
 }
+.profile__info {
+  width: 250px;
+}
 .profile__name {
   font-family: 'Inter';
   font-weight: 500;
-  font-size: 40px;
-  line-height: 27px;
+  font-size: 30px;
   max-height: 39px;
-  margin: 0 0 8px;
-  width: 100%;
+  
 }
 .profile__bio {
   font-family: 'Inter';
@@ -216,11 +221,10 @@
   font-size: 14px;
   height: 18px;
   line-height: 22px;
-  margin: 0 0 25px;
-  width: 100%;
+  width: 250px;
 }
 .profile__edit-btn {
-  margin-top: 15px;
+
 }
 .header {
   max-width: calc(100% - 30px);
@@ -235,4 +239,66 @@
   width: 100px;
   height: 40px;
 }
+.cards {
+  grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media screen and (max-width: 767px) {
+  .cards {
+    grid-template-columns: 1fr;
+    margin: 0 19px;
+  }
+  .page {
+
+  }
+  .profile {
+    grid-template-columns: 1fr;
+    grid-template-areas:  'profile__avatar'
+                          'profile__info'
+                          'profile__add-btn';
+  }
+  .profile__avatar {
+    text-align: center;
+  }
+  .profile__info {
+    justify-content: center;
+    width: 100%;
+  }
+  .profile__name {
+    font-weight: 500;
+    margin: 22.25px 10px 0 0;
+    font-size: 27px;
+    line-height: 33px;
+    text-align: center;
+  }
+  .profile__bio {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    width: 100%;
+    margin-top: 0;
+  }
+  .profile__edit-btn {
+    
+    margin: 30.25px 0 0 0;
+    width: 18px;
+    height: 18px;
+  }
+  .profile__add-btn {
+    width: 282px;
+    height: 50px;
+    margin: 0 auto;
+  }
+  .header {
+    max-width: 100%;
+    margin: 0;
+    min-height: 84px;
+  }
+  .header__logo {
+    width: 103.74px;
+    height: 24.4px;
+    margin: 28px 0 0 27px;
+  }
 }
