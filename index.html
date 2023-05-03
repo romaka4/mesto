@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <title>Место</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="normalize.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="body">
   <div class="page">
@@ -18,10 +17,10 @@
         <img src="images/avatar-image.jpg" alt="Аватар" class="profile__image">
       </div>
       <div class="profile__info">
-        <p class="profile__name">Жак-Ив Кусто<button class="profile__edit-btn"></button></p>
+        <p class="profile__name">Жак-Ив Кусто</p>
+        <button class="profile__edit-btn"></button>
         <p class="profile__bio">Исследователь океана</p>
       </div>
-      
       <button class="profile__add-btn"></button>
     </section>
     <section class="cards">
@@ -67,11 +66,25 @@
           <button class="card__btn-like"></button>
         </div>
       </div>
+      
     </section>
   </div>
+  <div class="popup">
+    <div class="popup__popup-container">
+      <img src="images/close-icon.svg" alt="Закрыть" class="popup__close-icon">
+      <form class="form">
+        <h2 class="form__heading">Редактировать профиль</h2>
+          <input type='text' class='form__item form__item_el_name'  placeholder='Введите имя' value="Жак-Ив Кусто">
+          <input type='text' class='form__item form__item_el_job'  placeholder='Введите деятельность' value="Исследователь океана">
+          <button class="form__save-btn">Сохранить</button>
+      </form> 
+      
+    </div>
+  </div>
   <footer class="footer">
-    <p class="copirate">© 2020 Mesto Russia</p>
+    <p class="footer__copirate">© 2020 Mesto Russia</p>
   </footer>
   
+  <script src="scripts/script.js"></script>
 </body>
 </html>
