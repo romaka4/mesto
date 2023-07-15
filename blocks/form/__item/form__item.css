@@ -2,14 +2,11 @@
   border: none;
   border-bottom: 1px solid #00000033;
   width: 100%;
-  height: 14px;
-  font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-  padding-bottom: 10px;
-  transition: 0.3s;
+  padding: 10px 0;
 }
 .form__item:focus {
   border-color: #a1160254;
@@ -18,10 +15,13 @@
   transition: 0.3s;
 }
 .form__item:not(:last-of-type){
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 @media screen and (max-width: 767px) {
   .form__item {
-    padding-bottom: 8px;
+    padding: 8px 0;
+  }
+  .form__item:not(:last-of-type){
+    margin-bottom: 22px;
   }
 }
