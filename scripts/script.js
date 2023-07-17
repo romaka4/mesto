@@ -62,10 +62,10 @@ function handleFormSubmit (evt) {            // Сохраниние введе�
   profileBio.textContent = jobInput.value;
   closedPopup();
 };
-function openPopupAdd() {
+function openPopupAdd() {                     // Открытие формы добавления карточки
   popupNewPlace.classList.add('popup-new-place_opened');
 };
-function closedPopupAdd() {
+function closedPopupAdd() {                     // Закрытие формы добавления карточки
   popupNewPlace.classList.remove('popup-new-place_opened');
 };
 addBtn.addEventListener('click', openPopupAdd);
