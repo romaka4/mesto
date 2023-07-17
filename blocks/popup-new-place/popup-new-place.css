@@ -1,8 +1,8 @@
-.popup {
+.popup-new-place {
   display: flex;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.5s, opacity 0.5s cubic-bezier(0, 0, 0, 0);
+  transition: visibility 0.3s, opacity 0.3s cubic-bezier(0, 0, 0, 0);
   height: 100%;
   width: 100%;
   top: 0;
@@ -10,6 +10,8 @@
   background: #00000080;
   position: fixed;
   z-index: 5;
-  justify-content: center;
-  align-items: center;
 }
+
+
+
+
