@@ -18,7 +18,7 @@ const createBtn = document.querySelectorAll('.form')[1];
 const openPopupImage = document.querySelector('.popup-by-image');
 const popupImage = document.querySelector('.popup__image');
 const titleImage = document.querySelector('.popup__title-image');
-const closeImageBtn = document.querySelector('.popup__close-image');
+const closeImageBtn = document.querySelectorAll('.popup__close-icon')[2];
 
 const initialCards = [
   {
@@ -54,7 +54,8 @@ function openPopup() {                     // Открытие попапа
 };
 function closedPopup() {                    // Закрытие попапа
   popup.classList.remove('popup_opened');
-  popupNewPlace.classList.remove('popup-new-place_opened');
+  popupNewPlace.classList.remove('popup_opened');
+  console.log('click');
 };
 function handleFormSubmit (evt) {            // Сохраниние введенных значений, на страницу
   evt.preventDefault(); 
@@ -63,16 +64,14 @@ function handleFormSubmit (evt) {            // Сохраниние введе�
   closedPopup();
 };
 function openPopupAdd() {                     // Открытие формы добавления карточки
-  popupNewPlace.classList.add('popup-new-place_opened');
+  popupNewPlace.classList.add('popup_opened');
 };
-function closedPopupAdd() {                     // Закрытие формы добавления карточки
-  popupNewPlace.classList.remove('popup-new-place_opened');
-};
+
 addBtn.addEventListener('click', openPopupAdd);
-closePopupAdd.addEventListener('click', closedPopupAdd);
 formElement.addEventListener('submit', handleFormSubmit);
 editBtn.addEventListener('click', openPopup);
 closePopup.addEventListener('click', closedPopup);
+closePopupAdd.addEventListener('click', closedPopup);
 
 const renderCards = (card) => {
 const article = template.querySelector('.card').cloneNode(true);
@@ -96,6 +95,7 @@ closeImageBtn.addEventListener('click', function(){
   openPopupImage.classList.remove('popup_opened');
   popupImage.src = '';
   titleImage.textContent = '';
+  console.log('click');
 });
 }
 
@@ -112,7 +112,7 @@ function newPlace(evt) {
   cardImage.src = linkInput.value;
   cardName.textContent = titleInput.value;
   container.prepend(article);
-  closedPopupAdd();
+  closedPopup();
   linkInput.value = '';
   titleInput.value = '';
   article.querySelector('.card__btn-like').addEventListener('click', function(evt){
