@@ -26,33 +26,34 @@
           </div>
           <button class="profile__add-btn" type="button"></button>
         </section>
-        <section class="cards">
-          
-        </section>
+        <section class="cards"></section>
       </main>
     </div>
-    
+
     <footer class="footer">
       <p class="footer__copirate">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_edit">
       <div class="popup__popup-container">
-        <button class="popup__close-icon" type="button"></button>
-        <form class="form">
+        <button
+          class="popup__close-icon popup_type_edit-close-btn"
+          type="button"
+        ></button>
+        <form class="form form-type-edit">
           <h2 class="form__heading">Редактировать профиль</h2>
           <input
             type="text"
             class="form__item form__item_el_name"
             placeholder="Введите имя"
-            value=""
             name="name"
+            required
           />
           <input
             type="text"
             class="form__item form__item_el_job"
             placeholder="Введите деятельность"
-            value=""
             name="job"
+            required
           />
           <button class="form__save-btn" type="submit">Сохранить</button>
         </form>
@@ -60,22 +61,25 @@
     </div>
     <div class="popup popup-new-place">
       <div class="popup__popup-container">
-        <button class="popup__close-icon" type="button"></button>
-        <form class="form">
+        <button
+          class="popup__close-icon popup_type_add-close-btn"
+          type="button"
+        ></button>
+        <form class="form form-type-add">
           <h2 class="form__heading">Новое место</h2>
           <input
             type="text"
             class="form__item form__item_el_title"
             placeholder="Название"
-            value=""
             name="name"
+            required
           />
           <input
-            type="text"
+            type="url"
             class="form__item form__item_el_link"
             placeholder="Ссылка на картинку"
-            value=""
             name="link"
+            required
           />
           <button class="form__save-btn" type="submit">Создать</button>
         </form>
@@ -83,21 +87,25 @@
     </div>
     <div class="popup popup-by-image">
       <figure class="popup__img-container">
-        <img class="popup__image">
-        <button class="popup__close-icon" type="button"></button>
+        <img class="popup__image" />
+        <button
+          class="popup__close-icon popup_type_image-close-btn"
+          type="button"
+        ></button>
         <figcaption class="popup__title-image"></figcaption>
       </figure>
     </div>
     <template id="card-template">
       <article class="card">
-        <img class="card__image"/>
-        <img class="card__delete" src="images/delete.svg" alt="Удалить">
+        <img class="card__image" />
+        <img class="card__delete" src="images/delete.svg" alt="Удалить" />
         <div class="card__info">
           <h2 class="card__name"></h2>
           <button class="card__btn-like" type="button"></button>
         </div>
       </article>
     </template>
-    <script src="scripts/script.js"></script>
+    <script defer src="scripts/initial.js"></script>
+    <script defer src="scripts/script.js"></script>
   </body>
 </html>
