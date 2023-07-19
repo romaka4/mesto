@@ -1,6 +1,6 @@
 const editBtn = document.querySelector('.profile__edit-btn');
 const popupEdit = document.querySelector('.popup_type_edit');
-const closePopupEdit = document.querySelector('.popup_type_edit-close-btn');
+const closePopupEdit = document.querySelector('.popup__close-icon_type_edit');
 const formElementEdit = document.querySelector('.form-type-edit');
 const nameInput = document.querySelector('.form__item_el_name');
 const jobInput = document.querySelector('.form__item_el_job');
@@ -10,7 +10,7 @@ const profileBio = document.querySelector('.profile__bio');
 const container = document.querySelector('.cards');
 const popupNewPlace = document.querySelector('.popup-new-place');
 const placeAddBtn = document.querySelector('.profile__add-btn');
-const closePopupAdd = document.querySelector('.popup_type_add-close-btn');
+const closePopupAdd = document.querySelector('.popup__close-icon_type_add');
 const template = document.querySelector('#card-template').content;
 const titleInput = document.querySelector('.form__item_el_title');
 const linkInput = document.querySelector('.form__item_el_link');
@@ -18,7 +18,7 @@ const formElementAdd = document.querySelector('.form-type-add');
 const openPopupImage = document.querySelector('.popup-by-image');
 const popupImage = document.querySelector('.popup__image');
 const titleImage = document.querySelector('.popup__title-image');
-const closePopupImageBtn = document.querySelector('.popup_type_image-close-btn');
+const closePopupImageBtn = document.querySelector('.popup__close-icon_type_image');
 
 const closePopup = (elem) => {
   elem.classList.remove('popup_opened');
