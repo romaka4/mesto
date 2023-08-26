@@ -6,22 +6,23 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-  padding: 10px 0;
+  padding: 2px 0 10px;
+ 
+  margin-bottom: 5px;
 }
-.form__item:focus {
-  border-color: #a1160254;
-  outline: 0;
-  box-shadow: 0 3px 5px 1px #a1160254;
-  transition: 0.3s;
+.form__item:not(:last-child) {
+  margin-top: 5px;
 }
-.form__item:not(:last-of-type){
+
+/* .form__item:not(:last-of-type){
   margin-bottom: 20px;
-}
+} */
 @media screen and (max-width: 767px) {
   .form__item {
     padding: 8px 0;
   }
   .form__item:not(:last-of-type){
     margin-bottom: 22px;
-  }
+  } 
+  
 }

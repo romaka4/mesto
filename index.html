@@ -39,22 +39,35 @@
           class="popup__close-icon popup__close-icon_type_edit"
           type="button"
         ></button>
-        <form class="form form-type-edit">
+        <form class="form form-type-edit" novalidate>
           <h2 class="form__heading">Редактировать профиль</h2>
-          <input
-            type="text"
-            class="form__item form__item_el_name"
-            placeholder="Введите имя"
-            name="name"
-            required
-          />
-          <input
-            type="text"
-            class="form__item form__item_el_job"
-            placeholder="Введите деятельность"
-            name="job"
-            required
-          />
+          <div class="form__input-container">
+            <input
+              type="text"
+              class="form__item form__item_el_name"
+              placeholder="Введите имя"
+              name="name"
+              id="name"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+
+            <span id="name-error" class="input-error"></span>
+          </div>
+          <div class="form__input-container">
+            <input
+              type="text"
+              class="form__item form__item_el_job"
+              placeholder="Введите деятельность"
+              name="job"
+              id="job"
+              required
+              minlength="2"
+              maxlength="200"
+            />
+            <span id="job-error" class="input-error"></span>
+          </div>
           <button class="form__save-btn" type="submit">Сохранить</button>
         </form>
       </div>
@@ -65,22 +78,32 @@
           class="popup__close-icon popup__close-icon_type_add"
           type="button"
         ></button>
-        <form class="form form-type-add">
+        <form class="form form-type-add" novalidate>
           <h2 class="form__heading">Новое место</h2>
-          <input
-            type="text"
-            class="form__item form__item_el_title"
-            placeholder="Название"
-            name="name"
-            required
-          />
-          <input
-            type="url"
-            class="form__item form__item_el_link"
-            placeholder="Ссылка на картинку"
-            name="link"
-            required
-          />
+          <div class="form__input-container">
+            <input
+              type="text"
+              class="form__item form__item_el_title"
+              placeholder="Название"
+              name="title"
+              id="title"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span id="title-error" class="input-error"></span>
+          </div>
+          <div class="form__input-container">
+            <input
+              type="url"
+              class="form__item form__item_el_link"
+              placeholder="Ссылка на картинку"
+              name="link"
+              id="link"
+              required
+            />
+            <span id="link-error" class="input-error"></span>
+          </div>
           <button class="form__save-btn" type="submit">Создать</button>
         </form>
       </div>
@@ -105,6 +128,7 @@
         </div>
       </article>
     </template>
+    <script defer src="scripts/validate.js"></script>
     <script defer src="scripts/initial.js"></script>
     <script defer src="scripts/script.js"></script>
   </body>
