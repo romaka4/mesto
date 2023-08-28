@@ -23,7 +23,6 @@ const closePopupImageBtn = document.querySelector('.popup__close-icon_type_image
 
 const closePopup = (elem) => {
   elem.classList.remove('popup_opened');
-  document.removeEventListener('click', overlayClose);
   document.removeEventListener('keyup', escClose);
 };
 
@@ -35,6 +34,8 @@ const openPopup = (elem) => {
 
 placeAddBtn.addEventListener('click', () => {
   openPopup(popupNewPlace);
+  formElementAdd.reset(); 
+  enableValidation(config);
 });
 
 formElementEdit.addEventListener('submit', (evt) => {
@@ -48,6 +49,7 @@ editBtn.addEventListener('click', () => {
   openPopup(popupEdit);
   nameInput.value = profileName.textContent; // заполняем поля теми значениями что уже есть на странице
   jobInput.value = profileBio.textContent;
+  enableValidation(config);
 });
 
 closePopupEdit.addEventListener('click', () => {
@@ -64,16 +66,14 @@ closePopupImageBtn.addEventListener('click', () => {
 
 const escClose = (e) => {
   if (e.key === 'Escape') {
-    closePopup(popupNewPlace);
-    closePopup(popupEdit);
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
   } 
 }
-
 const overlayClose = (e) => {
   const popupOpened = document.querySelector('.popup_opened');
   if (e.target === popupOpened) {
-    closePopup(popupNewPlace);
-    closePopup(popupEdit);
+    closePopup(popupOpened);
   };
 }
 
@@ -96,6 +96,7 @@ const createCard = (cardItems) => {
     openPopup(openPopupImage);
     popupImage.src = cardImage.src;
     titleImage.textContent = cardName.textContent;
+    popupImage.alt = cardName.textContent;
   });
 
   return article;
@@ -115,13 +116,15 @@ function createNewPlace(evt) {
   const newCard = createCard(element);
   container.prepend(newCard);
   formElementAdd.reset(); 
+  enableValidation(config);
 };
-
-enableValidation({
+const config = {
   formSelector: '.form',
   inputSelector: '.form__item',
   submitButtonSelector: '.form__save-btn',
   inactiveButtonClass: 'form__save-btn_disabled',
   inputErrorClass: 'form__item_error',
   errorClass: 'input-error_active'
-});
+};
+
+enableValidation(config);

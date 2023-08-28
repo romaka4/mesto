@@ -37,20 +37,23 @@ const showInputError = (formElement, inputElement, errorMessage, config) => {
   errorElement.classList.add(config.errorClass);
   inputElement.classList.add(config.inputErrorClass);
 }
+
 const setEventListeners = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const submitButton = formElement.querySelector(config.submitButtonSelector);
   toggleButtonState(inputList, submitButton, config);
   inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, config);
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, config);
       toggleButtonState(inputList, submitButton, config);
     });
   });
 };
+
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     setEventListeners(formElement, config);
   });
-};
+}; 
