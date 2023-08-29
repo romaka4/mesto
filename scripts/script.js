@@ -31,11 +31,16 @@ const openPopup = (elem) => {
 placeAddBtn.addEventListener('click', () => {
   openPopup(popupNewPlace);
   formElementAdd.reset();
-  setEventListeners(formElementAdd, config);
+  const submitButton = formElementAdd.querySelector(config.submitButtonSelector);
+  disableButton(submitButton, config);
+  const inputList = Array.from(formElementAdd.querySelectorAll(config.inputSelector));
+  inputList.forEach((inputElement) => {
+    hideInputError(formElementAdd, inputElement, config);
+}); // Вызываются конкретные функции, функционал проверен, все работает, смущает что код стал больше, надеюсь это нормально
 });
 
 formElementEdit.addEventListener('submit', (evt) => {
-  evt.preventDefault(); 
+  evt.preventDefault();
   profileName.textContent = nameInput.value; 
   profileBio.textContent = jobInput.value;
   closePopup(popupEdit);
@@ -43,9 +48,14 @@ formElementEdit.addEventListener('submit', (evt) => {
 
 editBtn.addEventListener('click', () => {
   openPopup(popupEdit);
-  nameInput.value = profileName.textContent; // заполняем поля теми значениями что уже есть на странице
+  nameInput.value = profileName.textContent;
   jobInput.value = profileBio.textContent;
-  setEventListeners(formElementEdit, config);
+  const submitButton = formElementEdit.querySelector(config.submitButtonSelector);
+  enableButton(submitButton, config);
+  const inputList = Array.from(formElementEdit.querySelectorAll(config.inputSelector));
+  inputList.forEach((inputElement) => {
+    hideInputError(formElementEdit, inputElement, config);
+});
 });
 popupEdit.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup__close-icon_type_edit') || (evt.target.classList.contains('popup_opened'))) {
