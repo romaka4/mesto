@@ -48,7 +48,7 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
+// При вынесении константов в отдельный js файл, его нужно подключать как модуль(через импорт, экспорт) или также как мы делали раньше в предыдущих спринтах?
 const closePopup = (elem) => {
   elem.classList.remove('popup_opened');
   document.removeEventListener('keyup', escClose);
@@ -62,7 +62,6 @@ const openPopup = (elem) => {
 placeAddBtn.addEventListener('click', () => {
   openPopup(popupNewPlace);
   formElementAdd.reset();
-  const formAddValid = new FormValidator(config, formElementAdd);
   formAddValid.chekForm();
 });
 
@@ -74,12 +73,12 @@ formElementEdit.addEventListener('submit', (evt) => {
 });
 
 editBtn.addEventListener('click', () => {
-  openPopup(popupEdit);
   nameInput.value = profileName.textContent;
   jobInput.value = profileBio.textContent;
-  const formEditValid = new FormValidator(config, formElementEdit);
   formEditValid.chekForm();
+  openPopup(popupEdit);
 });
+
 popupEdit.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup__close-icon_type_edit') || (evt.target.classList.contains('popup_opened'))) {
     closePopup(popupEdit);
@@ -110,14 +109,10 @@ const escClose = (e) => {
   } 
 }
 
-const formValid = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-  formList.forEach((formElement) => {
-    const formElementValid = new FormValidator(config, formElement);
-    formElementValid.enableValidation();
-  });
-}
-formValid(config); 
+const formAddValid = new FormValidator(config, formElementAdd);
+formAddValid.enableValidation();
+const formEditValid = new FormValidator(config, formElementEdit);
+formEditValid.enableValidation();
 initialCards.forEach((card) => { 
   const myCard = new Card(card, '#card-template')
   const cardElem = myCard.renderCard();

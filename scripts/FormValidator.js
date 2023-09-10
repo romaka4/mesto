@@ -2,6 +2,7 @@ export class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
   }
   _checkInput (inputElement) {
     if (!inputElement.validity.valid) {
@@ -45,7 +46,6 @@ export class FormValidator {
     }
   }
   _setEventListeners () {
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
@@ -56,7 +56,6 @@ export class FormValidator {
     })
   }
   chekForm() {
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     this._inputList.forEach((inputElement) => {
     this._hideInputError(inputElement);
     this._toggleButtonState();
