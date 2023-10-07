@@ -1,12 +1,9 @@
-const openPopupImage = document.querySelector('.popup-by-image');
-const popupImage = document.querySelector('.popup__image');
-const titleImage = document.querySelector('.popup__title-image');
-import {closePopup, openPopup} from './index.js';
 export class Card {
-  constructor(cardData, templateSelector)  {
+  constructor(cardData, templateSelector, { handleCardClick })  {
     this.name = cardData.name;
     this.link = cardData.link;
     this.templateSelector = templateSelector;
+    this.handleCardClick = handleCardClick;
   }
   _getTemplate() {
     this._element = document.querySelector(this.templateSelector).content.querySelector('.card').cloneNode(true);
@@ -22,23 +19,10 @@ export class Card {
     this._setEventListeners();
     return this._element
   }
-  _handleOpenPopup() {
-    openPopup(openPopupImage);
-    popupImage.src = this.link;
-    titleImage.textContent = this.name;
-    popupImage.alt = this.name;
-  }
-  _handleClosePopup(evt) {
-    if (evt.target.classList.contains('popup__close-icon_type_image') || (evt.target.classList.contains('popup_opened'))) {
-      closePopup(openPopupImage);
-    }
-  }
+
   _setEventListeners() {
-    this._image.addEventListener('click', () => {
-      this._handleOpenPopup()
-    });
-    openPopupImage.addEventListener('click', (evt) => {
-      this._handleClosePopup(evt)
+    this._image.addEventListener('click', (evt) => {
+      this.handleCardClick(evt);
     });
     this._element.querySelector('.card__btn-like').addEventListener('click', (evt) => {
       evt.target.classList.toggle('card__btn-like_active');
