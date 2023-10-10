@@ -9,16 +9,6 @@ export class Card {
     this._element = document.querySelector(this._templateSelector).content.querySelector('.card').cloneNode(true);
     return this._element;
   }
-  createCard(item) {
-    this._element = this._getTemplate();
-    this._image = this._element.querySelector('.card__image');
-    this._name = this._element.querySelector('.card__name');
-    this._image.src = item.link;
-    this._image.alt = item.name;
-    this._name.textContent = item.name;
-    this._setEventListeners();
-    return this._element;
-  }
   renderCard() {
     this._element = this._getTemplate();
     this._image = this._element.querySelector('.card__image');
@@ -29,7 +19,6 @@ export class Card {
     this._setEventListeners();
     return this._element
   }
-
   _setEventListeners() {
     this._image.addEventListener('click', () => {
       this._handleCardClick(this._title, this._link);

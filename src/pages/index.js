@@ -15,21 +15,17 @@ formEditValid.enableValidation();
 
 const cardList = new Section({data: initialCards,  renderer: (item) => {
   cardList.addItem(createCard(item));
-  }
-}, '.cards');
-
-const popupImage = new PopupWithImage ('.popup-by-image'); 
+}}, '.cards');
 const popupAdd = new PopupWithForm({popupSelector: '.popup-new-place', callback: (item) =>{
   cardList.addNewCard(createCard(item));
   popupAdd.close();
-}
-});
+}});
+const popupImage = new PopupWithImage ('.popup-by-image'); 
 const userInfo = new UserInfo ({nameSelector: '.profile__name', infoUserSelector: '.profile__bio'});
 const popupProfile = new PopupWithForm ({popupSelector: '.popup_type_edit', callback: (data) =>{
   userInfo.setUserInfo(data);
   popupProfile.close();
-}
-});
+}});
 
 editBtn.addEventListener('click', openFormProfile);
 placeAddBtn.addEventListener('click', openFormCard);
