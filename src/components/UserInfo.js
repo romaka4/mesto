@@ -7,7 +7,7 @@ export class UserInfo {
   getUserInfo () {
     return {
       name: this._name.textContent,
-      job: this._job.textContent
+      about: this._job.textContent
     }
   }
   setAvatar(data) {
@@ -15,6 +15,6 @@ export class UserInfo {
   }
   setUserInfo(data) {
     this._name.textContent = data.name; 
-    this._job.textContent = data.job;
+    this._job.textContent = data.about; 
   }
 }

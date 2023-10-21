@@ -1,11 +1,11 @@
-import { formAvatarValid, myId, api, popupAdd, formAddValid, formElementAdd, formEditValid, popupProfile, userInfo, nameInput, jobInput, popupImage, popupAvatar} from "../pages/index.js";
-import { Card } from '../scripts/Card.js';
-import { PopupWithDelete } from "../scripts/PopupWithDelete.js";
-
+import { formAvatarValid, myId, api, popupAddCard, formAddValid, formElementAdd, formEditValid, popupProfile, userInfo, nameInput, jobInput, popupImage, popupAvatar} from "../pages/index.js";
+import { Card } from '../components/Card.js';
+import { PopupWithDelete } from "../components/PopupWithDelete.js";
+import { saveBtn } from "./constants.js";
 export const openFormProfile = () =>{
   const userValue = userInfo.getUserInfo();
   nameInput.value = userValue.name;
-  jobInput.value = userValue.job;
+  jobInput.value = userValue.about;
   formEditValid.resetFormState();
   popupProfile.open();
 }
@@ -16,9 +16,9 @@ export const openFormAvatar = () => {
 export const openFormCard = () => {
   formAddValid.resetFormState();
   formElementAdd.reset();
-  popupAdd.open();
+  popupAddCard.open();
 }
-export const createCard = (item) => {
+export const createCard = (item, myId) => {
   const card = new Card (item, myId, '#card-template', {
     setLike: (cardId) => {
       api.setLike(cardId)
@@ -40,13 +40,30 @@ export const createCard = (item) => {
   }, 
   { handleCardClick: (name, link) => { 
     popupImage.open(name, link); 
-  }}, {handleDeleteClick: (cardId) => {
-    const popupDelete = new PopupWithDelete('.popup-by-delete-card', { confirm: () => {
-      api.delete(cardId);
-      card.removeCard();
-    }})
-    popupDelete.setEventListeners();
+  }}, 
+  {handleDeleteClick: (cardId, element) => {
+    popupDelete.open(cardId, element)
   }});
   const cardElement = card.renderCard();
   return cardElement;
 }
+export const renderLoading = (isLoading) => {
+  if (isLoading) {
+    saveBtn.forEach((btn) =>{
+      btn.textContent = 'Сохранение...';
+    })
+  } else {
+    saveBtn.forEach((btn) =>{
+      btn.textContent = 'Сохранить';
+    })
+  }
+}
+export const popupDelete = new PopupWithDelete('.popup-by-delete-card', {
+  confirm: (id, element) => {
+    api.delete(id, element)
+    .then(() => {
+      element.removeCard();
+      popupDelete.close();
+    })
+  }
+});
