@@ -32,16 +32,15 @@
 .popup__img-container{display:flex;position:relative}
 .popup_opened{opacity:1;visibility:visible}
 .popup-by-image{background:rgba(0,0,0,.9)}
-.form{height:100%;width:100%}
+.form{display:flex;flex-direction:column;height:100%;width:100%}
 .form__heading{font-size:24px;font-weight:900;line-height:29px;margin:0 0 40px;max-width:330px}@media screen and (max-width:767px){.form__heading{font-size:18px;line-height:22px;margin:0 0 68px;max-width:238px}}
+.form__heading_delete{margin-bottom:21px}
 .form__item{border:none;border-bottom:1px solid #00000033;color:#000;font-size:14px;font-weight:400;line-height:17px;margin-bottom:5px;padding:2px 0 10px;width:100%}.form__item:not(:last-child){margin-top:5px}@media screen and (max-width:767px){.form__item{padding:8px 0}.form__item:not(:last-of-type){margin-bottom:22px}}
-
-.form__input-container{height:61px}
+.form__input-container{display:flex;flex-direction:column}
 .form__item_error{border-bottom:1px solid red}
-.popup__save-btn_disabled{background:#fff;border:1px solid #00000033;color:#00000033;cursor:default}.popup__save-btn_disabled:hover{background:#fff}
-.input-error{color:red;display:none;font-family:Inter;font-size:12px;font-weight:400;height:22px;letter-spacing:0;line-height:15px;text-align:left;width:358px}
-.input-error_active{display:block}
-.popup-by-delete-card__question{box-sizing:border-box;font-size:24px;font-weight:900;height:23px;letter-spacing:0;line-height:29px;margin:0 0 21px;text-align:left}
+.input-error{color:red;font-family:Inter;font-size:12px;font-weight:400;height:22px;letter-spacing:0;line-height:15px;text-align:left;width:358px}
+
+.popup_type_delete-card__question{box-sizing:border-box;font-size:24px;font-weight:900;height:23px;letter-spacing:0;line-height:29px;margin:0 0 21px;text-align:left}
 .footer{margin:45px auto 0;max-width:880px}@media screen and (max-width:1023px){.footer{padding:0 40px;width:100%}}@media screen and (max-width:767px){.footer{max-width:282px;padding:0}}
 .footer__copirate{color:#545454;font-size:18px;font-weight:400;line-height:22px;margin:67px 0 60px}@media screen and (max-width:767px){.footer__copirate{font-size:14px;font-weight:400;line-height:17px;margin:48px 0 36px}}
 
